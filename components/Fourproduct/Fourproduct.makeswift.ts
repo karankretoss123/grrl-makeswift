@@ -23,7 +23,7 @@ const fetchCategories = async () => {
     console.error('Error fetching categories:', error)
   }
 }
-await fetchCategories()
+fetchCategories()
 // .then(() => {
 runtime.registerComponent(
   lazy(() => import('./Fourproduct')),
