@@ -5,12 +5,7 @@ import axios from 'axios'
 
 import { runtime } from '@/lib/makeswift/runtime'
 
-let categories: { label: string; value: any }[] = [
-  {
-    label: 'Test',
-    value: 'Test',
-  },
-]
+let categories: { label: string; value: any }[] = []
 
 const fetchCategories = async () => {
   try {

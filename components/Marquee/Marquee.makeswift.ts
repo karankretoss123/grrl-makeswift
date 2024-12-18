@@ -8,7 +8,7 @@ runtime.registerComponent(
   lazy(() => import('./Marquee')),
   {
     type: 'Marquee',
-    label: 'Custom / Marquee',
+    label: 'Custom / MarqueeNew',
     props: {
       className: Style(),
       logos: List({
