@@ -1,12 +1,14 @@
 import { lazy } from 'react'
 
-import { List, Select, Shape, Slot, Style, TextInput } from '@makeswift/runtime/controls'
+import { Select, Style } from '@makeswift/runtime/controls'
 import axios from 'axios'
 
 import { runtime } from '@/lib/makeswift/runtime'
 
+// Initial placeholder categories
 let categories: { label: string; value: any }[] = []
 
+// Fetch categories and update the options dynamically
 const fetchCategories = async () => {
   try {
     const apiUrl: string = process.env.apiUrl || ''
@@ -23,19 +25,23 @@ const fetchCategories = async () => {
     console.error('Error fetching categories:', error)
   }
 }
-fetchCategories().finally(() => {
-  runtime.registerComponent(
-    lazy(() => import('./Fourproduct')),
-    {
-      type: 'Fourproduct',
-      label: 'Custom / FourproductNew',
-      props: {
-        className: Style(),
-        categoryId: Select({
-          label: 'Category',
-          options: categories, // Provide preloaded categories here
-        }),
-      },
-    }
-  )
-})
+
+fetchCategories()
+
+// Register the component synchronously with a placeholder
+runtime.registerComponent(
+  lazy(() => import('./Fourproduct')),
+  {
+    type: 'Fourproduct',
+    label: 'Custom / FourproductNew',
+    props: {
+      className: Style(),
+      categoryId: Select({
+        label: 'Category',
+        get options() {
+          return categories // Provide the current categories dynamically
+        },
+      }),
+    },
+  }
+)
