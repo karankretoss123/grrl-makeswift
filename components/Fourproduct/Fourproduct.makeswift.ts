@@ -23,19 +23,20 @@ const fetchCategories = async () => {
     console.error('Error fetching categories:', error)
   }
 }
-fetchCategories().then(() => {
-  runtime.registerComponent(
-    lazy(() => import('./Fourproduct')),
-    {
-      type: 'Fourproduct',
-      label: 'Custom / Fourproduct',
-      props: {
-        className: Style(),
-        categoryId: Select({
-          label: 'Category',
-          options: categories, // Provide preloaded categories here
-        }),
-      },
-    }
-  )
-})
+fetchCategories()
+// .then(() => {
+runtime.registerComponent(
+  lazy(() => import('./Fourproduct')),
+  {
+    type: 'Fourproduct',
+    label: 'Custom / Fourproduct',
+    props: {
+      className: Style(),
+      categoryId: Select({
+        label: 'Category',
+        options: categories, // Provide preloaded categories here
+      }),
+    },
+  }
+)
+// })
