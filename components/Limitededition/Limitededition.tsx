@@ -17,7 +17,7 @@ type Props = {
 }
 
 export const Limitededition = forwardRef(function Tabs(
-  { className, categoryId = 'Limitededition' }: Props,
+  { className, categoryId = '23' }: Props,
   ref: Ref<HTMLDivElement>
 ) {
   const apiUrl: string = process.env.apiUrl || ''
@@ -65,7 +65,7 @@ export const Limitededition = forwardRef(function Tabs(
           No products available for this category.
         </div>
       ) : (
-        <div className="flex flex-col gap-8 md:flex-row xl:mx-[20rem] 2xl:mx-[22rem]">
+        <div className="flex flex-col gap-8 md:flex-row xl:mx-[10rem] 2xl:mx-[22rem]">
           {/* Section 1: 2 products in the same column */}
           <div className="flex flex-col gap-6">
             {products.slice(0, 2).map((product, i) => (
@@ -73,7 +73,7 @@ export const Limitededition = forwardRef(function Tabs(
                 <img
                   src={product.image}
                   alt={product.title as string}
-                  className="h-[15rem] max-w-[15rem] rounded-[25px] object-cover md:h-[20rem]"
+                  className="h-[15rem] w-[800px] rounded-[25px] object-cover md:h-[20rem]"
                 />
                 <h3 className="mt-4 text-lg">{product.title}</h3>
                 <div className="mt-2">{product.price}</div>
@@ -87,7 +87,7 @@ export const Limitededition = forwardRef(function Tabs(
               <img
                 src={products[2].image}
                 alt={products[2].title as string}
-                className="h-[45rem] max-w-[15rem] rounded-[25px] object-cover"
+                className="h-[45rem] w-[800px] rounded-[25px] object-cover"
               />
               <h3 className="mt-4 text-lg">{products[2].title}</h3>
               <div className="mt-2">{products[2].price}</div>
@@ -103,7 +103,7 @@ export const Limitededition = forwardRef(function Tabs(
                 className="object-fit h-full w-full rounded-[25px]"
               />
             </div>
-            <button className="w-full rounded-full bg-[#DBF067] px-6 py-3 text-lg font-bold shadow-md hover:bg-[#DBF067]/80">
+            <button className="w-max rounded-full bg-[#DBF067] px-12 py-3 text-lg font-bold shadow-md hover:bg-[#DBF067]/80">
               VIEW ALL
             </button>
             <img src="/images/smile.jpg" alt="Limited Edition" className="mt-4 h-20" />
