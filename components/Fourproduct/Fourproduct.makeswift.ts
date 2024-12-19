@@ -7,6 +7,10 @@ import { runtime } from '@/lib/makeswift/runtime'
 
 let categories: { label: string; value: any }[] = [
   {
+    label: 'Utility',
+    value: '22',
+  },
+  {
     label: 'Shop All',
     value: '23',
   },

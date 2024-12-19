@@ -16,7 +16,7 @@ type Props = {
   categoryId: string
 }
 
-export const Fourproduct = forwardRef(function Tabs(
+export const Sixproduct = forwardRef(function Tabs(
   { className, categoryId }: Props,
   ref: Ref<HTMLDivElement>
 ) {
@@ -42,7 +42,7 @@ export const Fourproduct = forwardRef(function Tabs(
           description: product.description,
           image: product.image || '',
         }))
-        .slice(0, 4)
+        .slice(0, 6)
       setProducts(fetchedProducts)
     } catch (error) {
       console.error('Error fetching products:', error)
@@ -55,9 +55,21 @@ export const Fourproduct = forwardRef(function Tabs(
     if (categoryId) fetchProductsByCategory(categoryId)
   }, [categoryId])
   return (
-    <div ref={ref} className={clsx(className, 'p-5')}>
+    <div
+      ref={ref}
+      className={clsx(
+        className,
+        'flex flex-col justify-center bg-cover bg-center px-5 py-12' // Tailwind classes for background styling
+      )}
+      style={{
+        backgroundImage: 'url("/images/six-product-bg.png")', // Replace with your image URL
+      }}
+    >
+      <h3 className="py-12 text-center text-[18px] text-xl font-bold capitalize italic md:text-[36px]">
+        FEATURED COLLECTION
+      </h3>
       {/* Product grid */}
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 ">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:px-[5rem] 2xl:px-[20rem]">
         {isLoading ? (
           <div className="p-6 text-center text-lg text-gray-600">Loading products...</div>
         ) : products.length === 0 ? (
@@ -66,21 +78,24 @@ export const Fourproduct = forwardRef(function Tabs(
           </div>
         ) : (
           products.map((product, i) => (
-            <div key={i} className="rounded-xl text-white shadow-lg">
+            <div key={i} className="rounded-xl">
               <img
                 src={product.image}
                 alt={product.title as string}
-                className="h-[18rem] w-full rounded-[25px] object-cover md:h-[28rem]"
+                className="h-[8rem] w-[14rem] rounded-[25px] object-cover md:h-[10rem]"
               />
               <h3 className="mt-4 text-lg">{product.title}</h3>
-              {/* <h3 className="mt-4 text-lg font-bold">{product.image}----</h3> */}
-              <div className="mt-2">{product.price}</div>
+              <div className="mt-2 text-sm font-light">{product.price}</div>
             </div>
           ))
         )}
       </div>
+
+      <button className="mx-auto mt-20 w-max rounded-full bg-[#FF02D6] px-24 py-4 text-white shadow-md hover:bg-[#FF02D6]/80">
+        VIEW ALL
+      </button>
     </div>
   )
 })
 
-export default Fourproduct
+export default Sixproduct
